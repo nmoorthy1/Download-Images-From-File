@@ -16,6 +16,7 @@ Download images listed in example.txt
     >>> dl.py example.txt
 
 Download images from default file a.txt if found
+
     >>> dl.py
 
 
