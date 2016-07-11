@@ -1,4 +1,4 @@
-# Download images from file
+# Download Images From File
 Given a file with URLs separated by lines, the script will attempt to download the webpage(intended for images) to a folder with the current date.
 
 ## Requirements
