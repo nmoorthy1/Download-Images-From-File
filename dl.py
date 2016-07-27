@@ -11,6 +11,7 @@ dir = "./Images " + time.strftime("%m-%d-%Y") + "/"
 a = 0
 b = 0
 c = 0
+d = 0
 try:
 	if len(sys.argv) == 2:
 		c = 1
@@ -38,8 +39,11 @@ except OSError as e:
 
 if a == 0:
 	os.makedirs(os.path.dirname(dir), exist_ok=True)
-	print("\nDownloading "+str(len(f.readlines()))+" image(s)")
+	numlines = str(len(f.readlines()))
+	print("\nDownloading "+numlines+" image(s)")
 	f.seek(0)
+	i = 1
+	temp = ""
 	for line in f:
 		if line != "\n":
 			try:
@@ -62,21 +66,28 @@ if a == 0:
 				img = urllib.request.urlopen(req)
 				temp = line.rpartition('/')[2]
 				temp = temp.strip('\n')
-				print("Downloading",temp)
+				print("Downloading file {}/{} {}".format(i,numlines,temp))
 				out = open(dir+temp, "wb")
 				out.write(img.read())
 				out.close()
+				i = i + 1
 			except urllib.error.HTTPError as err:
-				if err.code == 403:
-					print(err.code)
-				else:
-					raise
+				d = 1
+				print("{} Could not download file {}/{} {}".format(err.code, i, numlines, temp))
+				i = i + 1
+				pass
+
+				
+				
+				
+				
 	f.close()
 	if c == 1:
 		os.remove(sys.argv[1])
 	else:
-		if b == 1:
-			os.remove(arg)
-		else:
-			os.remove("a.txt")
+		if d == 0:
+			if b == 1:
+				os.remove(arg)
+			else:
+				os.remove("a.txt")
 	print("\nDone!")
