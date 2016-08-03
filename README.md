@@ -28,9 +28,9 @@ Download images from default file a.txt if found
     Can't find a.txt, enter file name: example.txt
     
     Downloading 3 image(s)
-    Downloading 2xjKoEZ.png
-    Downloading S0OLuhO.mp4
-    Downloading 08pNXmr.jpg
+    Downloading file 1/3 2xjKoEZ.png
+    Downloading file 2/3 S0OLuhO.mp4
+    Downloading file 3/3 08pNXmr.jpg
     
     Done!
     
