@@ -72,8 +72,11 @@ if a == 0:
 				out.close()
 				i = i + 1
 			except urllib.error.HTTPError as err:
-				d = 1
+				# d = 1
 				print("{} Could not download file {}/{} {}".format(err.code, i, numlines, temp))
+				failed = open("failed.txt", "a+")
+				failed.write(line)
+				failed.close()
 				i = i + 1
 				pass
 
